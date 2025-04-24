@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const textEntrySchema = new mongoose.Schema({
+  title: {
+    type:String,
+    required: false
+  },
   free_text: {
     type: String,
     required: true

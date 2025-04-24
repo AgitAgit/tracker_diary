@@ -16,6 +16,7 @@ async function hashPassword(password) {
 
 router.post('/create', async (req, res) => {
     try {
+        console.log(req.body)
         const { username, password } = req.body;
         const hashedPassword = await hashPassword(password)
 
@@ -28,6 +29,10 @@ router.post('/create', async (req, res) => {
         console.log(error);
         res.json({ message: "The server failed to create a new user" })
     }
+})
+
+router.post('/login', async (req, res) => {
+
 })
 
 module.exports = router
