@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const textEntrySchema = new mongoose.Schema({
   title: {
-    type:String,
+    type: String,
     required: false
   },
   free_text: {
@@ -13,11 +13,12 @@ const textEntrySchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true
-  }
+  },
+  described_day_date: Date
 }, {
   timestamps: true
 });
 
 const TextEntry = mongoose.model('TextEntry', textEntrySchema);
 
-module.exports = TextEntry; 
+module.exports = TextEntry;
