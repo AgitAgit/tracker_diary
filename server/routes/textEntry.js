@@ -6,11 +6,12 @@ const router = express.Router()
 router.post('/', authUser, async (req, res) => {
     try {
         const { user } = req;
-        const { text, title } = req.body;
+        const { text, title, described_day_date } = req.body;
         const newTextEntry = new TextEntry({
             user_id: user.id,
             title: title,
-            free_text: text
+            free_text: text,
+            described_day_date
         })
         const result = await newTextEntry.save()
         res.json({ result })
@@ -30,5 +31,6 @@ router.get('/', authUser, async (req, res) => {
         res.status(500).json({ message: "internal server error" })
     }
 })
+
 
 module.exports = router
