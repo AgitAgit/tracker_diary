@@ -14,7 +14,10 @@ const textEntrySchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
-  described_day_date: Date
+  described_day_date: {
+    type: Date,
+    default: Date.now
+  }
 }, {
   timestamps: true
 });

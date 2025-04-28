@@ -1,7 +1,6 @@
 const TextEntry = require('../models/textEntry')
 const express = require('express')
 const authUser = require('../middleware/auth')
-const router = express.Router()
 
 // router.post('/', authUser, async (req, res) => {
 //     try {
@@ -31,9 +30,13 @@ const router = express.Router()
 //         res.status(500).json({ message: "internal server error" })
 //     }
 // })
-async function getLatestEntry(user_id){
+
+async function getLatestEntries(user_id, limit = 1) {
     try {
-        
+        const result = await TextEntry.find({})
+            .sort({ described_day_date: -1 })
+            .limit(limit)
+        return result;
     } catch (error) {
         console.log(error)
     }
@@ -41,4 +44,4 @@ async function getLatestEntry(user_id){
 
 
 
-module.exports = router
+module.exports = { getLatestEntries }
