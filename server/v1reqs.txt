@@ -1,0 +1,16 @@
+1. users to edit a daily page object
+2. daily page object with the following properties:
+    1.  an array of freeText objects
+    2.  an array of qa objects
+    3.  action object with optional time of start + time of end or just time of end or none,
+        optional description, tags array
+    this could be made simpler by creating only the dailyPage object and allowing editing
+    of it instead of creating it as a composite object.
+    For v1 lets go with the simpler option.
+
+Maybe the dailyPage is too limiting. Not granular enough.
+Should have freeText objects, qa object and action objects,
+each with date and the option to add start/end.
+
+The dailyPage can be a view in the client to organize
+entries for display.
