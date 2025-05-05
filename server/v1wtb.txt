@@ -14,3 +14,5 @@ each with date and the option to add start/end.
 
 The dailyPage can be a view in the client to organize
 entries for display.
+
+I should start creating a client and use it for daily journaling, and add features as I see fit.
