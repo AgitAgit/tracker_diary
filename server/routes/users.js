@@ -2,6 +2,7 @@ const express = require('express')
 const bcrypt = require('bcrypt')
 const router = express.Router()
 const User = require('../models/user')
+const { login } = require('./../controllers/users')
 
 async function hashPassword(password) {
     try {
@@ -31,8 +32,6 @@ router.post('/create', async (req, res) => {
     }
 })
 
-router.post('/login', async (req, res) => {
-
-})
+router.post('/login', login)
 
 module.exports = router

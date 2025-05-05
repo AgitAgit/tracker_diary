@@ -11,7 +11,7 @@ router.post('/', authUser, async (req, res) => {
         const { text, title, described_day_date } = req.body;
         const date = described_day_date ? new Date(described_day_date) : Date.now()
         const newTextEntry = new TextEntry({
-            user_id: user.id,
+            user_id: user._id,
             title: title,
             free_text: text,
             described_day_date: date
@@ -48,7 +48,7 @@ router.get('/seed', authUser, seedTextEntry, async (req, res) => {
 router.get('/', authUser, async (req, res) => {
     try {
         const { user } = req;
-        const result = await TextEntry.find({ user_id: user.id })
+        const result = await TextEntry.find({ user_id: user._id })
         res.json({ text_entries: result })
     } catch (error) {
         console.log(error)

@@ -15,4 +15,17 @@ each with date and the option to add start/end.
 The dailyPage can be a view in the client to organize
 entries for display.
 
+Basic reqs:
+1.  user signup/login
+2.  add/remove textEntry
+    get all text entries by user
+3.  add/remove qaObject
+    get all qaObjects by user
+4.  add/remove actionObject
+    get all actionObjects by user
+
+stage 2 Reqs:
+1. option to edit textEntry/qaObject/actionObject
+
+After finishing the basic server structure,
 I should start creating a client and use it for daily journaling, and add features as I see fit.

@@ -16,10 +16,10 @@ async function seedTextEntry(req, res, next) {
     try {
         const { user } = req;
         const today = Date.now()
-        const latestEntry = await getLatestEntries(user.id, 1);
+        const latestEntry = await getLatestEntries(user._id, 1);
         const geminiResponse = await promptGemini(`you are writing a diary entry for the following character:${TEST_CHARACTER_DEFINITION}, his last entry was:{${latestEntry.free_text}}. Generate a new entry that makes sense in this context. It should be between 50 and 250 words long. The entry itself should always start and end with @@@`);
         const text = geminiResponse.split('@@@')[1]
-        await saveEntry(user.id, null, text, today)
+        await saveEntry(user._id, null, text, today)
         next();
     } catch (error) {
         console.log(error)
