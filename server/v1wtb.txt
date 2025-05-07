@@ -1,3 +1,56 @@
+I want to track daily habits, goals, emotions and events.
+I want to get help tracking my wishes, my goals, my actions towards them.
+
+I want some review function that goes over the text and suggests areas where
+actions and goals are incongruent.
+
+Basic motivation:
+I have a tendency to get excited about changing things and I have a hard time keeping consistent
+at things. I think that having some tool to record and compile suggestions based on the ways
+my winds of interest blow accross many days/months can help me stay commited to things and better
+decipher what my will and direction are.
+
+I need some set of questions to help me monitor things.
+They should be repeatable and easily answerable.
+They should include at least some measureable metric.
+There should also be a free text section.
+
+As a base I can look at my daily page.
+How much prime hours have I invested, into what?
+What tasks did I complete?
+What am I proud of today?
+What am I missing today?...
+
+Maybe I can get help from someone studying psychology to choose questions relevant to my task.
+Maybe I could make use of the big 5 model to model my questions
+
+2025.04.23
+1. write a basic server and get a message that its up DONE.
+
+2.0. add dotenv and a function that connects to the db when the server runs DONE.
+2.1. create a route to create users and test it (create "test" user) DONE.
+3. write authentication middleware. for now I'll skip authentication. All actions will be performed through the "test" user. so the middleware will 
+    simply refer to the logged in user as the test user id. DONE.
+
+4. create a route to add textEntry, whose user ID will be taken from the currently logged in user variable(for now, test user id) DONE.
+
+5. create a route to get all textEntry's by the authenticated user. DONE.
+
+6. create some seeding function to add many entries to the test user. 
+I can use prompts to some ai model for that. 
+They can refer to older entries/some invented character with traits to generate interesting entries which can stand for realistic 
+diary entries. 
+Or I can look for sources online for some dummy diary of a person and try to get insights from that.
+
+7. create a dailyPage schema that will be built of a few optional parts:
+    1.  an array of freeText objects
+    2.  an array of qa objects
+    3.  action object with optional time of start + time of end or just time of end or none,
+        optional description, tags array
+    this could be made simpler by creating only the dailyPage object and allowing editing
+    of it instead of creating it as a composite object.
+    For v1 lets go with the simpler option.
+
 1. users to edit a daily page object
 2. daily page object with the following properties:
     1.  an array of freeText objects
