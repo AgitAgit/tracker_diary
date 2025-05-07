@@ -16,9 +16,9 @@ The dailyPage can be a view in the client to organize
 entries for display.
 
 Basic reqs:
-1.  user signup/login
-2.  add/remove textEntry
-    get all text entries by user
+1.  user signup/login DONE
+2.  add/remove textEntry DONE
+    get all text entries by user DONE
 3.  add/remove qaObject
     get all qaObjects by user
 4.  add/remove actionObject

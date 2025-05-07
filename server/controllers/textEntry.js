@@ -42,6 +42,27 @@ async function getLatestEntries(user_id, limit = 1) {
     }
 }
 
+async function deleteEntry(req, res) {
+    try {
+        const entryId = req.params.id
+        const entry = await TextEntry.findOne({ _id: entryId });
+        let response;
+        if (entry && entry.user_id.toString() === req.user._id.toString()) {
+            response = await TextEntry.findByIdAndDelete(entryId)
+            res.json({ message: "entry deleted", entry: response })
+        }
+        else if (entry) {
+            res.status(400).json({ error: "user not authorized to delete this entry" })
+        }
+        else {
+            res.status(400).json({ error: "entry not found" })
+        }
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ error: "internal server error" })
+    }
+}
 
 
-module.exports = { getLatestEntries }
+
+module.exports = { getLatestEntries, deleteEntry }

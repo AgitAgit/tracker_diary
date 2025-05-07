@@ -12,9 +12,8 @@ async function login(req, res, next) {
                 .status(400)
                 .json({ message: "email and password are required...", login: false });
         const storedUser = await User.findOne({ user_name: username }); //check if the user exists and extract it from the db
-        // console.log("stored user:", storedUser);
         if (!storedUser)
-            return res.json({ message: `could not find user ${username}`, login: false });
+            return res.json({ message: `could not find user '${username}'`, login: false });
         const isValid = bcrypt.compareSync(password, storedUser.password); //use bcrypt to test if the login password matches the stored one
         if (!isValid)
             return res.json({ message: "Invalid password...", login: false });
@@ -29,10 +28,9 @@ async function login(req, res, next) {
             secretKey,
             { expiresIn: "1h" }
         );
-        console.log("a user has logged in...");
         res.status(200)
             .cookie("jwt", token)
-            .json({ message: `User with email ${email} logged in successfully.`, login: true, user: storedUser, token: token });
+            .json({ message: `User '${username}' logged in successfully.`, login: true, user: storedUser, token: token });
     } catch (error) {
         next(error);
     }

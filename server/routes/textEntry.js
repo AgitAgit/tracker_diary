@@ -2,9 +2,10 @@ const TextEntry = require('../models/textEntry')
 const express = require('express')
 const authUser = require('../middleware/auth')
 const router = express.Router()
-const { getLatestEntries } = require('../controllers/textEntry')
+const { getLatestEntries, deleteEntry } = require('../controllers/textEntry')
 const { seedTextEntry } = require('../helpers/seedTextEntry')
 
+// post new text entry
 router.post('/', authUser, async (req, res) => {
     try {
         const { user } = req;
@@ -24,7 +25,7 @@ router.post('/', authUser, async (req, res) => {
     }
 })
 
-
+// get latest {limit} entries
 router.get('/latestEntries/:limit', authUser, async (req, res) => {
     try {
         const { user } = req;
@@ -55,5 +56,7 @@ router.get('/', authUser, async (req, res) => {
         res.status(500).json({ message: "internal server error" })
     }
 })
+
+router.delete('/:id', authUser, deleteEntry)
 
 module.exports = router
